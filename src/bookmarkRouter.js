@@ -21,7 +21,7 @@ bookmarkRouter
     if(!title) {
       logger.error('title is required');
       return res
-        .status(400).send('invalid data')
+        .status(400).send('title is requires')
     }
   
     if(!isWebUri(url)) {
