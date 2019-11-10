@@ -16,12 +16,12 @@ bookmarkRouter
   })
   
 .post(bodyParser, (req, res) => {
-    const {title, url, content} = req.body;
+    const {title, url, content, rating} = req.body;
   
     if(!title) {
       logger.error('title is required');
       return res
-        .status(400).send('title is requires')
+        .status(400).send('title is required')
     }
   
     if(!isWebUri(url)) {
@@ -35,6 +35,13 @@ bookmarkRouter
       return res
         .status(400).send('content is required');
     }
+    
+    if(!rating) {
+      logger.error('rating is required');
+      return res
+        .status(400).send('rating is required');
+    }
+
     //get an id
     const id = uuid(); 
   
